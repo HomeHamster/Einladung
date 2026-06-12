@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Heike 51 & Bernd 52 – Zwei Jahrgänge, eine Party</title>
+  <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Special+Elite&family=Oswald:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #0f0f0f;
+      --dark: #1a1a1a;
+      --rust: #b84a1a;
+      --cream: #f0e8d0;
+      --chrome: #c8c8c8;
+      --yellow: #f5c518;
+      --mid: #2d2d2d;
+    }
+
+    body {
+      background-color: var(--black);
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.015) 2px, rgba(255,255,255,0.015) 4px),
+        repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(255,255,255,0.01) 40px, rgba(255,255,255,0.01) 41px);
+      font-family: 'Lato', sans-serif;
+      color: var(--cream);
+      min-height: 100vh;
+      padding: 2rem 1rem 4rem;
+    }
+
+    /* ── CARD ── */
+    .card {
+      max-width: 740px;
+      margin: 0 auto;
+      background: var(--dark);
+      border: 2px solid #333;
+      border-radius: 6px;
+      box-shadow: 0 0 60px rgba(184,74,26,0.3), 0 0 120px rgba(184,74,26,0.1);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* flame stripe top */
+    .flame-stripe {
+      height: 8px;
+      background: linear-gradient(90deg,
+        var(--rust) 0%, var(--yellow) 30%, var(--rust) 60%, #ff6a00 80%, var(--yellow) 100%);
+    }
+
+    /* ── HEADER ── */
+    .header {
+      text-align: center;
+      padding: 2.5rem 1.5rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* VW Käfer SVG background */
+    .header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 50% 120%, rgba(184,74,26,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .kaefer-container {
+      margin: 0 auto 1rem;
+      width: 260px;
+      position: relative;
+    }
+
+    .kaefer-container svg {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 4px 18px rgba(184,74,26,0.6));
+    }
+
+    .flames {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .eyebrow {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.75rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 0.5rem;
+    }
+
+    .headline {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 700;
+      font-size: clamp(2.4rem, 10vw, 5rem);
+      line-height: 1;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--cream);
+      text-shadow: 3px 3px 0 var(--rust), 6px 6px 0 rgba(184,74,26,0.3);
+    }
+
+    .headline span {
+      color: var(--yellow);
+    }
+
+    .subline {
+      font-family: 'Boogaloo', cursive;
+      font-size: clamp(1.2rem, 4vw, 1.9rem);
+      color: var(--chrome);
+      margin-top: 0.4rem;
+      letter-spacing: 0.05em;
+    }
+
+    .names {
+      font-family: 'Oswald', sans-serif;
+      font-size: clamp(1.8rem, 7vw, 3.2rem);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 0.8rem;
+      background: linear-gradient(90deg, var(--yellow), var(--rust), var(--yellow));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 0 2rem;
+      color: var(--rust);
+      font-size: 1.2rem;
+    }
+    .divider::before, .divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--rust), transparent);
+    }
+
+    /* ── CONTENT ── */
+    .content {
+      padding: 1.5rem 2.5rem 2rem;
+    }
+
+    .intro {
+      font-family: 'Special Elite', cursive;
+      font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+      line-height: 1.9;
+      text-align: center;
+      color: #c8b89a;
+      margin: 1.2rem 0;
+    }
+
+    .intro strong {
+      color: var(--yellow);
+      font-style: normal;
+    }
+
+    /* ── JAHRGÄNGE CARDS ── */
+    .jahrgang-row {
+      display: flex;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+
+    .jahrgang-card {
+      flex: 1;
+      background: var(--mid);
+      border: 1px solid #444;
+      border-top: 3px solid var(--rust);
+      border-radius: 4px;
+      padding: 1.2rem 1rem;
+      text-align: center;
+      position: relative;
+    }
+
+    .jahrgang-card.gold {
+      border-top-color: var(--yellow);
+    }
+
+    .jg-number {
+      font-family: 'Oswald', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--rust);
+    }
+    .jahrgang-card.gold .jg-number { color: var(--yellow); }
+
+    .jg-label {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--chrome);
+      margin: 0.2rem 0 0.5rem;
+    }
+
+    .jg-name {
+      font-family: 'Boogaloo', cursive;
+      font-size: 1.4rem;
+      color: var(--cream);
+    }
+
+    .jg-model {
+      font-size: 0.75rem;
+      color: #888;
+      margin-top: 0.3rem;
+      font-style: italic;
+    }
+
+    /* ── INFO BOX ── */
+    .info-box {
+      background: #111;
+      border: 1px solid #333;
+      border-left: 4px solid var(--rust);
+      border-radius: 3px;
+      padding: 1.4rem 1.6rem;
+      margin: 1.5rem 0;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .info-row:last-child { margin-bottom: 0; }
+
+    .info-icon { font-size: 1.3rem; flex-shrink: 0; }
+
+    .info-label {
+      font-family: 'Special Elite', cursive;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--rust);
+      margin-bottom: 0.1rem;
+    }
+
+    .info-value {
+      font-size: 1rem;
+      color: var(--cream);
+    }
+
+    /* ── FUN NOTE ── */
+    .fun-note {
+      background: #1e1408;
+      border: 1px dashed var(--rust);
+      border-radius: 4px;
+      padding: 1rem 1.2rem;
+      margin: 1.2rem 0;
+      font-family: 'Special Elite', cursive;
+      font-size: 0.92rem;
+      line-height: 1.8;
+      color: #c8b89a;
+      text-align: center;
+    }
+
+    .fun-note .highlight {
+      color: var(--yellow);
+      font-size: 1.05em;
+    }
+
+    /* ── RSVP ── */
+    .rsvp-section {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .rsvp-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: var(--rust);
+      margin-bottom: 0.3rem;
+    }
+
+    .rsvp-subtitle {
+      font-size: 0.88rem;
+      color: #888;
+      margin-bottom: 1.2rem;
+    }
+
+    .rsvp-subtitle strong { color: var(--cream); }
+
+    .form-wrapper {
+      background: #111;
+      border: 1px solid #333;
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .form-wrapper iframe {
+      width: 100%;
+      height: 560px;
+      border: none;
+      display: block;
+    }
+
+    .form-placeholder {
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+    }
+
+    .form-placeholder p {
+      font-family: 'Oswald', sans-serif;
+      color: var(--rust);
+      font-size: 1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .rsvp-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--rust), #e05a20);
+      color: var(--cream);
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 0.9rem 2.2rem;
+      border-radius: 4px;
+      border: 2px solid var(--yellow);
+      box-shadow: 0 4px 20px rgba(184,74,26,0.5);
+      transition: transform 0.15s, box-shadow 0.15s;
+      margin-bottom: 0.8rem;
+    }
+    .rsvp-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(184,74,26,0.7);
+    }
+    .btn-hint {
+      font-size: 0.78rem;
+      color: #666;
+      margin-top: 0.4rem;
+    }
+
+    .form-placeholder .hint {
+      font-size: 0.78rem;
+      color: #666;
+      font-family: monospace;
+      background: #1a1a1a;
+      padding: 0.6rem 1rem;
+      border-radius: 3px;
+      display: inline-block;
+      border: 1px solid #333;
+      line-height: 1.8;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      background: #111;
+      border-top: 1px solid #333;
+      text-align: center;
+      padding: 1.2rem 1rem;
+      font-family: 'Boogaloo', cursive;
+      font-size: 1.1rem;
+      color: var(--chrome);
+      letter-spacing: 0.05em;
+    }
+
+    .footer span {
+      color: var(--rust);
+    }
+
+    @media (max-width: 500px) {
+      .content { padding: 1.2rem 1rem; }
+      .jahrgang-row { flex-direction: column; }
+      .kaefer-container { width: 180px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="card">
+  <div class="flame-stripe"></div>
+
+  <div class="header">
+    <!-- VW Käfer SVG -->
+    <div class="kaefer-container">
+      <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+        <!-- Flames unter dem Käfer -->
+        <g opacity="0.85">
+          <ellipse cx="80" cy="148" rx="30" ry="8" fill="#b84a1a" opacity="0.5"/>
+          <path d="M55 148 Q62 130 70 148 Q75 128 82 148 Q88 132 95 148 Q100 135 107 148Z" fill="#f5c518" opacity="0.7"/>
+          <path d="M60 148 Q67 136 74 148 Q80 130 86 148 Q92 138 100 148Z" fill="#ff6a00" opacity="0.6"/>
+        </g>
+        <!-- Schatten -->
+        <ellipse cx="148" cy="155" rx="120" ry="8" fill="#000" opacity="0.5"/>
+        <!-- Karosserie Käfer -->
+        <!-- Hinterrad-Kotflügel -->
+        <path d="M30 120 Q25 90 50 78 Q70 68 90 72 L90 120Z" fill="#b84a1a"/>
+        <!-- Hauptkarosserie -->
+        <path d="M88 72 Q100 40 148 32 Q196 24 212 42 Q230 58 235 80 L235 120 L88 120Z" fill="#cc5520"/>
+        <!-- Dach -->
+        <path d="M100 72 Q118 38 148 30 Q178 22 200 42 Q215 56 220 72Z" fill="#d96030"/>
+        <!-- Vorderkotflügel -->
+        <path d="M210 120 L235 120 Q255 118 262 100 Q268 82 255 75 Q240 68 225 72Z" fill="#b84a1a"/>
+        <!-- Chrom-Zierleiste -->
+        <line x1="88" y1="96" x2="236" y2="96" stroke="#c8c8c8" stroke-width="2" opacity="0.6"/>
+        <!-- Windschutzscheibe -->
+        <path d="M103 72 Q120 50 148 44 Q176 38 197 56 L197 72Z" fill="#1a3a5c" opacity="0.8"/>
+        <path d="M103 72 Q120 50 148 44 Q176 38 197 56 L197 72Z" fill="rgba(100,180,255,0.15)"/>
+        <!-- Heckscheibe -->
+        <path d="M105 72 L103 72 Q98 78 98 86 L118 86 Q116 76 112 72Z" fill="#1a3a5c" opacity="0.7"/>
+        <!-- Stoßstangen -->
+        <rect x="30" y="115" width="18" height="5" rx="2" fill="#c8c8c8"/>
+        <rect x="252" y="115" width="18" height="5" rx="2" fill="#c8c8c8"/>
+        <!-- Türgriff -->
+        <rect x="155" y="90" width="20" height="4" rx="2" fill="#c8c8c8" opacity="0.8"/>
+        <!-- VW Emblem -->
+        <circle cx="148" cy="56" r="8" fill="#c8c8c8"/>
+        <text x="148" y="60" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="9" fill="#1a1a1a">VW</text>
+        <!-- Räder -->
+        <circle cx="80" cy="130" r="22" fill="#1a1a1a" stroke="#555" stroke-width="2"/>
+        <circle cx="80" cy="130" r="14" fill="#333"/>
+        <circle cx="80" cy="130" r="6" fill="#c8c8c8"/>
+        <!-- Felgenspeichen -->
+        <line x1="80" y1="116" x2="80" y2="144" stroke="#888" stroke-width="1.5"/>
+        <line x1="66" y1="130" x2="94" y2="130" stroke="#888" stroke-width="1.5"/>
+        <line x1="70" y1="120" x2="90" y2="140" stroke="#888" stroke-width="1.5"/>
+        <line x1="90" y1="120" x2="70" y2="140" stroke="#888" stroke-width="1.5"/>
+
+        <circle cx="222" cy="130" r="22" fill="#1a1a1a" stroke="#555" stroke-width="2"/>
+        <circle cx="222" cy="130" r="14" fill="#333"/>
+        <circle cx="222" cy="130" r="6" fill="#c8c8c8"/>
+        <line x1="222" y1="116" x2="222" y2="144" stroke="#888" stroke-width="1.5"/>
+        <line x1="208" y1="130" x2="236" y2="130" stroke="#888" stroke-width="1.5"/>
+        <line x1="212" y1="120" x2="232" y2="140" stroke="#888" stroke-width="1.5"/>
+        <line x1="232" y1="120" x2="212" y2="140" stroke="#888" stroke-width="1.5"/>
+        <!-- Scheinwerfer vorne -->
+        <ellipse cx="258" cy="92" rx="7" ry="9" fill="#fffde0" opacity="0.9"/>
+        <ellipse cx="258" cy="92" rx="5" ry="7" fill="#fff" opacity="0.5"/>
+        <!-- Rücklicht -->
+        <rect x="33" y="86" width="8" height="14" rx="3" fill="#cc0000" opacity="0.9"/>
+        <!-- Tiefergelegte Optik – Linie -->
+        <path d="M88 120 L236 120" stroke="#f5c518" stroke-width="1.5" opacity="0.5"/>
+        <!-- Custom-Auspuff -->
+        <path d="M40 124 Q30 130 20 128 Q16 126 18 122 Q22 120 30 122 Q38 124 40 124" fill="#888" stroke="#666" stroke-width="1"/>
+        <ellipse cx="18" cy="125" rx="4" ry="3" fill="#555"/>
+      </svg>
+    </div>
+
+    <div class="eyebrow">Zwei Jahrgänge — Eine Legende</div>
+    <div class="headline">Heike <span>&</span> Bernd</div>
+    <div class="subline">feiern endlich ihren Geburtstag 🎸</div>
+  </div>
+
+  <div class="divider">⚙ ⚙ ⚙</div>
+
+  <div class="content">
+
+    <p class="intro">
+      Sie sind wie zwei getunte Käfer:<br/>
+      <strong>verschiedene Baujahre</strong>, aber beide noch
+      <strong>voll in Schuss</strong> —<br/>
+      und wenn sie zusammen losfahren, dreht sich jeder um.
+    </p>
+
+    <div class="jahrgang-row">
+      <div class="jahrgang-card">
+        <div class="jg-number">51</div>
+        <div class="jg-label">Baujahr 1975</div>
+        <div class="jg-name">Heike</div>
+        <div class="jg-model">Sondermodell · Einmalig produziert</div>
+      </div>
+      <div class="jahrgang-card gold">
+        <div class="jg-number">52</div>
+        <div class="jg-label">Baujahr 1973</div>
+        <div class="jg-name">Bernd</div>
+        <div class="jg-model">Oldtimer · Collector's Edition</div>
+      </div>
+    </div>
+
+    <div class="fun-note">
+      🔧 Beide technisch einwandfrei. Tiefergelegt. Breitreifen.<br/>
+      <span class="highlight">Zusammen über 100 PS Lebensfreude.</span><br/>
+      Die Party war schon längst fällig — <em>Vollgas!</em>
+    </div>
+
+    <div class="divider">🔥 🔥 🔥</div>
+
+    <div class="info-box">
+      <div class="info-row">
+        <span class="info-icon">📅</span>
+        <div>
+          <div class="info-label">Datum</div>
+          <div class="info-value">Samstag, 1. August 2026</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">🕖</span>
+        <div>
+          <div class="info-label">Uhrzeit</div>
+          <div class="info-value">Ab 18:30 Uhr — Motor warm laufen lassen!</div>
+        </div>
+      </div>
+      <div class="info-row">
+        <span class="info-icon">📍</span>
+        <div>
+          <div class="info-label">Treffpunkt</div>
+          <div class="info-value">Sportheim Großhabersdorf</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rsvp-section">
+      <div class="rsvp-title">⚡ Anmeldung</div>
+      <p class="rsvp-subtitle">Bitte bis <strong>1. Juli 2026</strong> Bescheid geben — damit wir den Tank richtig voll machen.</p>
+
+      <div class="form-wrapper">
+        <!--
+          HINWEIS: Nextcloud Forms-URL eintragen.
+          Formular in Nextcloud öffnen → "Teilen" → Link kopieren → unten als src einfügen.
+          Dann den div.form-placeholder durch den auskommentierten iframe ersetzen.
+        -->
+        <div class="form-placeholder">
+          <p>📋 Jetzt anmelden</p>
+          <a class="rsvp-btn" href="https://nx56697.your-storageshare.de/apps/forms/s/yQwwozK4oQ94qrSWD3Ts83oy" target="_blank" rel="noopener">
+            ⚡ Zur Anmeldung — Vollgas!
+          </a>
+          <div class="btn-hint">Öffnet das Formular in einem neuen Tab</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Wir freuen uns auf euch — <span>Vollgas!</span> 🏁
+  </div>
+
+  <div class="flame-stripe"></div>
+</div>
+
+</body>
+</html>
