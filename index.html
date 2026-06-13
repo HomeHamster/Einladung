@@ -7,7 +7,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Boogaloo&family=Special+Elite&family=Oswald:wght@400;700&family=Lato:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  
+
     :root {
       --black: #0f0f0f;
       --dark: #1a1a1a;
@@ -68,21 +68,16 @@
 
     .kaefer-container {
       margin: 0 auto 1rem;
-      width: 260px;
+      width: 100%;
+      max-width: 600px;
       position: relative;
     }
 
-    .kaefer-container svg {
+    .kaefer-container img {
       width: 100%;
       height: auto;
-      filter: drop-shadow(0 4px 18px rgba(184,74,26,0.6));
-    }
-
-    .flames {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
+      border-radius: 6px;
+      filter: drop-shadow(0 6px 24px rgba(184,74,26,0.7));
     }
 
     .eyebrow {
@@ -391,67 +386,10 @@
   <div class="header">
     <!-- VW Käfer SVG -->
     <div class="kaefer-container">
-      <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
-        <!-- Flames unter dem Käfer -->
-        <g opacity="0.85">
-          <ellipse cx="80" cy="148" rx="30" ry="8" fill="#b84a1a" opacity="0.5"/>
-          <path d="M55 148 Q62 130 70 148 Q75 128 82 148 Q88 132 95 148 Q100 135 107 148Z" fill="#f5c518" opacity="0.7"/>
-          <path d="M60 148 Q67 136 74 148 Q80 130 86 148 Q92 138 100 148Z" fill="#ff6a00" opacity="0.6"/>
-        </g>
-        <!-- Schatten -->
-        <ellipse cx="148" cy="155" rx="120" ry="8" fill="#000" opacity="0.5"/>
+      <img src="vw-kaefer1.jpg" alt="VW Käfer in Clementine Orange" />
         <!-- Karosserie Käfer -->
         <!-- Hinterrad-Kotflügel -->
         <path d="M30 120 Q25 90 50 78 Q70 68 90 72 L90 120Z" fill="#b84a1a"/>
-        <!-- Hauptkarosserie -->
-        <path d="M88 72 Q100 40 148 32 Q196 24 212 42 Q230 58 235 80 L235 120 L88 120Z" fill="#cc5520"/>
-        <!-- Dach -->
-        <path d="M100 72 Q118 38 148 30 Q178 22 200 42 Q215 56 220 72Z" fill="#d96030"/>
-        <!-- Vorderkotflügel -->
-        <path d="M210 120 L235 120 Q255 118 262 100 Q268 82 255 75 Q240 68 225 72Z" fill="#b84a1a"/>
-        <!-- Chrom-Zierleiste -->
-        <line x1="88" y1="96" x2="236" y2="96" stroke="#c8c8c8" stroke-width="2" opacity="0.6"/>
-        <!-- Windschutzscheibe -->
-        <path d="M103 72 Q120 50 148 44 Q176 38 197 56 L197 72Z" fill="#1a3a5c" opacity="0.8"/>
-        <path d="M103 72 Q120 50 148 44 Q176 38 197 56 L197 72Z" fill="rgba(100,180,255,0.15)"/>
-        <!-- Heckscheibe -->
-        <path d="M105 72 L103 72 Q98 78 98 86 L118 86 Q116 76 112 72Z" fill="#1a3a5c" opacity="0.7"/>
-        <!-- Stoßstangen -->
-        <rect x="30" y="115" width="18" height="5" rx="2" fill="#c8c8c8"/>
-        <rect x="252" y="115" width="18" height="5" rx="2" fill="#c8c8c8"/>
-        <!-- Türgriff -->
-        <rect x="155" y="90" width="20" height="4" rx="2" fill="#c8c8c8" opacity="0.8"/>
-        <!-- VW Emblem -->
-        <circle cx="148" cy="56" r="8" fill="#c8c8c8"/>
-        <text x="148" y="60" text-anchor="middle" font-family="Arial" font-weight="bold" font-size="9" fill="#1a1a1a">VW</text>
-        <!-- Räder -->
-        <circle cx="80" cy="130" r="22" fill="#1a1a1a" stroke="#555" stroke-width="2"/>
-        <circle cx="80" cy="130" r="14" fill="#333"/>
-        <circle cx="80" cy="130" r="6" fill="#c8c8c8"/>
-        <!-- Felgenspeichen -->
-        <line x1="80" y1="116" x2="80" y2="144" stroke="#888" stroke-width="1.5"/>
-        <line x1="66" y1="130" x2="94" y2="130" stroke="#888" stroke-width="1.5"/>
-        <line x1="70" y1="120" x2="90" y2="140" stroke="#888" stroke-width="1.5"/>
-        <line x1="90" y1="120" x2="70" y2="140" stroke="#888" stroke-width="1.5"/>
-
-        <circle cx="222" cy="130" r="22" fill="#1a1a1a" stroke="#555" stroke-width="2"/>
-        <circle cx="222" cy="130" r="14" fill="#333"/>
-        <circle cx="222" cy="130" r="6" fill="#c8c8c8"/>
-        <line x1="222" y1="116" x2="222" y2="144" stroke="#888" stroke-width="1.5"/>
-        <line x1="208" y1="130" x2="236" y2="130" stroke="#888" stroke-width="1.5"/>
-        <line x1="212" y1="120" x2="232" y2="140" stroke="#888" stroke-width="1.5"/>
-        <line x1="232" y1="120" x2="212" y2="140" stroke="#888" stroke-width="1.5"/>
-        <!-- Scheinwerfer vorne -->
-        <ellipse cx="258" cy="92" rx="7" ry="9" fill="#fffde0" opacity="0.9"/>
-        <ellipse cx="258" cy="92" rx="5" ry="7" fill="#fff" opacity="0.5"/>
-        <!-- Rücklicht -->
-        <rect x="33" y="86" width="8" height="14" rx="3" fill="#cc0000" opacity="0.9"/>
-        <!-- Tiefergelegte Optik – Linie -->
-        <path d="M88 120 L236 120" stroke="#f5c518" stroke-width="1.5" opacity="0.5"/>
-        <!-- Custom-Auspuff -->
-        <path d="M40 124 Q30 130 20 128 Q16 126 18 122 Q22 120 30 122 Q38 124 40 124" fill="#888" stroke="#666" stroke-width="1"/>
-        <ellipse cx="18" cy="125" rx="4" ry="3" fill="#555"/>
-      </svg>
     </div>
 
     <div class="eyebrow">Zwei Jahrgänge — Eine Legende</div>
@@ -486,7 +424,7 @@
     </div>
 
     <div class="fun-note">
-      🔧 Beide technisch einwandfrei. Tiefergelegt. Breitreifen.<br/>
+      🔧 Beide technisch einwandfrei. TÜV? Fragen wir lieber nicht.<br/>
       <span class="highlight">Zusammen über 100 PS Lebensfreude.</span><br/>
       Die Party war schon längst fällig — <em>Vollgas!</em>
     </div>
